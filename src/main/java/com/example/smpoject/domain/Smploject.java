@@ -2,7 +2,7 @@ package com.example.smpoject.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-
+//
 @Getter
 @Builder
 @Table(name = "SMPROJECT")
