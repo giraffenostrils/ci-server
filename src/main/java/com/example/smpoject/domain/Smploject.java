@@ -16,7 +16,7 @@ public class Smploject {
     @Id
     @Column(name = "ID")
     private Long id;
-
+//
     @Column(name = "NAME")
     private String name;
 
