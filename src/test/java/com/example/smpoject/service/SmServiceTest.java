@@ -77,4 +77,51 @@ class SmServiceTest {
         assertEquals(byId.get().getName(),"bb");
 
     }
-}
+
+    @Test
+    void deleteById() {
+
+        //given
+        SmRequest smRequest = new SmRequest("aa","textaa");
+        SmRequest smRequest1 = new SmRequest("bb","textbb");
+
+        smService.save(smRequest);
+        smService.save(smRequest1);
+
+
+        //when
+        Long id=0l;
+        List<Smploject> shows = smService.shows(smRequest1.name());
+
+        for(Smploject smploject:shows){
+
+            id = smploject.getId();
+            Optional<Smploject> byId = smService.findById(id);
+            smRepository.deleteById(id);
+        }
+        //then
+
+        List<Smploject> shows1 = smService.shows(smRequest1.name());
+
+        assertEquals(0,shows1.size());
+
+    }
+    @Test
+    void deleteByIdFail(){
+
+        //given
+
+        Long id =8000L;
+
+        //when
+
+            assertThrows(IllegalArgumentException.class,()-> {
+                smService.deleteById(id);
+            });
+        }
+
+
+    }
+
+
+
