@@ -19,7 +19,7 @@ public class Smploject {
 //
     @Column(name = "NAME")
     private String name;
-
+//
     @Column(name = "TEXT")
     private String text;
 
