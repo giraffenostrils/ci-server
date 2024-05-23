@@ -11,5 +11,6 @@ public interface SmService {
     void save(SmRequest smRequest);
     List<Smploject> shows(String name);
     Optional<Smploject> findById(Long id);
+    void deleteById(Long id);
 
 }

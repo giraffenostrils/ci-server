@@ -24,7 +24,6 @@ public class SmServiceImpl implements SmService{
                 .name(smRequest.name())
                 .build();
 
-        System.out.println(smploject);
 
         smRepository.save(smploject);
     }
@@ -45,5 +44,16 @@ public class SmServiceImpl implements SmService{
 
 
         return byId;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+
+
+        Optional<Smploject> byId = smRepository.findById(id);
+        if(byId.isEmpty())throw new IllegalArgumentException("못찾음");
+
+        smRepository.deleteById(id);
+
     }
 }
