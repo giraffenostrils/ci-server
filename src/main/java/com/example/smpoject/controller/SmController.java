@@ -29,6 +29,8 @@ public class SmController {
         return ResponseEntity.ok(smResponse);
     }
 //
+    //
+    //
     @GetMapping("/{name}")
     List<Smploject> show(@PathVariable("name")String name){
 
