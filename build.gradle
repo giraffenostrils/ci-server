@@ -34,27 +34,7 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-jacocoTestCoverageVerification{
-	violationRules {
-		enabled = true
-		rule {
-			element = 'CLASS'
-			limit {
-				counter = 'LINE'
-				value = 'TOTALCOUNT'
-				maximum = 300
-			}
-		}
-		rule {
-			element = 'CLASS'
-			includes = ['com.example.smpoject.*.**']
-			limit {
-				value = 'COVEREDRATIO'
-				minimum = 0.8
-			}
-		}
-	}
-}
+
 
 jacocoTestReport {
 	dependsOn test

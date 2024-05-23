@@ -24,7 +24,6 @@ public class SmServiceImpl implements SmService{
                 .name(smRequest.name())
                 .build();
 
-        System.out.println(smploject);
 
         smRepository.save(smploject);
     }

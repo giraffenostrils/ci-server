@@ -5,6 +5,8 @@ import com.example.smpoject.domain.Smploject;
 import com.example.smpoject.dto.request.SmRequest;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
+@ExtendWith(MockitoExtension.class)
 class SmServiceTest {
 
     @Autowired
@@ -29,6 +32,7 @@ class SmServiceTest {
     SmRequest smRequest = new SmRequest("aa","textaa");
     //when &then
     smService.save(smRequest);
+    
 
 
     }
