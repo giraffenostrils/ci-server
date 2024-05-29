@@ -41,4 +41,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
-          docker rm -f ${{ secrets.DOCKER_REPO }}
+          docker rmi -f ${{ secrets.DOCKER_REPO }}
+          docker rm mymy
+          docker run --name mymy --network server -p 8383:3306 -e MYSQL_ROOT_PASSWORD=1q2w3e4r -e MYSQL_DATABASE=auth_test -d mysql
+          docker rm springg
+          docker run --name springg --network server -e profiles=prod -e username=root -e password=1q2w3e4r -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
