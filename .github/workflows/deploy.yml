@@ -39,10 +39,16 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 30s
+        command_timeout: 10m
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           docker rmi -f ${{ secrets.DOCKER_REPO }}
           docker rm mymy
           docker run --name mymy --network server -p 8383:3306 -e MYSQL_ROOT_PASSWORD=1q2w3e4r -e MYSQL_DATABASE=auth_test -d mysql
           docker rm springg
-          docker run --name springg --network server -e profiles=prod -e username=root -e password=1q2w3e4r -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
+          docker run --name springg --network server -e profiles=prod -e username=root -e ${{ secrets.DB_PASSWORD }} -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
+      env:
+        JAVA_HOME: /opt/hostedtoolcache/Java_Adopt_jdk/17.0.11-9/x64
+        JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Adopt_jdk/17.0.11-9/x64
