@@ -36,12 +36,9 @@ jobs:
     - name: SSH Deploy
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.SSH_HOST }}
+        host: ${{ secrets.ssh_HOST }}
         username: ${{ secrets.ssh_USERNAME }}
         key: ${{ secrets.ssh_PRIVATE_KEY }}
-        port: 22
-        timeout: 30s
-        command_timeout: 10m
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           docker rmi -f ${{ secrets.DOCKER_REPO }}
