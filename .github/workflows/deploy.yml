@@ -38,7 +38,7 @@ jobs:
       with:
         host: ${{ secrets.ssh_HOST }}
         username: ${{ secrets.ssh_USERNAME }}
-        key: ${{ secrets.ssh_PRIVATE_KEY }}
+        key: ${{ secrets.ssh_PASSWORD }}
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           docker rmi -f ${{ secrets.DOCKER_REPO }}
