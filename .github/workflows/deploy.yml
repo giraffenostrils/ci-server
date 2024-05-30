@@ -41,7 +41,7 @@ jobs:
         key: ${{ secrets.ssh_PASSWORD }}
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
-          docker rmi -f ${{ secrets.DOCKER_REPO }}
+          docker rmi -f ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
           docker rm -f springg
           docker run --name springg --network server -e profiles=prod -e username=root -e password=1q2w3e4r -p 8080:8080 -d ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}
       env:
